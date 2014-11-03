@@ -1,0 +1,288 @@
+" vim: ft=vim:
+
+
+let mapleader = "\<space>"
+
+
+"===========  OPTIONS  ==========="
+
+" 1 important
+:set nocompatible                   "[do not] behave very Vi compatible (not advisable)
+:set noinsertmode                   "[do not] use Insert mode as the default mode
+:set nopaste                        "[do not] paste mode, insert typed text literally
+"TODO -- include ~/work/.homedir/vim/
+:set runtimepath=$HOME/home/.vim/,$VIMRUNTIME,$HOME/home/.vim/after
+:set runtimepath+=$HOME/home/.vim/bundle/Vundle.vim
+                                    "list of directories used for runtime files and plugins
+"set helpfile=                      "name of the main help file
+
+" 2 moving around, searching and patterns
+:set whichwrap=b,s,h,l,<,>,[,]      " flags for which commands wrap across lines
+:set nostartofline                  " don't move to start of line on jump commands
+:set wrapscan                       " search commands wrap around the end of the buffer
+:set incsearch                      " show match for partly typed search commands
+:set magic
+:set noignorecase                   " don't ignore case when using a search pattern
+:set smartcase                      " ignore 'ignorecase' when pattern has uppercase characters
+:set define=xyzyxjdjkslkjsdfsdd     " don't zero-column # comments
+:set path+=../inc
+
+" 3 tags
+
+" 4 displaying text
+:set scrolloff=0
+:set nowrap
+:set nolinebreak
+"set fillchars=vert:\|,fold:-,stl:\ ,stlnc:-
+:set cmdheight=1
+:set lazyredraw                  " will not redraw the screen while running macros (goes faster)
+:set nolist
+:set listchars=tab:>=,trail:-
+
+" 5 syntax and highlighting
+:filetype off
+:set background=dark
+:set hlsearch
+:let loaded_matchparen = 1
+:set colorcolumn=80
+:set nocursorcolumn
+:set nocursorline
+
+" 6 multiple windows
+:set laststatus=2
+"set statusline     " using airline
+:set equalalways
+:set helpheight=10
+:set nohidden
+:set splitbelow
+:set splitright
+
+" 7 multiple tab pages
+
+" 8 terminal
+" support colors on xterms
+"if &term =~ "xterm"
+"  if has("terminfo")
+"    set t_Co=8
+"    set t_Sf=[3%pi%dm
+"    set t_Sb=[4%pi%dm
+"  else
+"    set t_Co=8
+"    set t_Sf=[3%dm
+"    set t_Sb=[4%dm
+"  endif
+"endif
+:set t_Co=256
+"set weirdinvert        " doesn't seem to help :(
+:set esckeys
+:set notitle
+"set ttyfast                     "tf:    improves redrawing for newer computers
+
+" 9 using the mouse
+:set mouse=
+
+" 10 printing
+
+" 11 messages and info
+:set noterse
+:set shortmess=afinxtToOI
+:set showcmd
+:set showmode
+:set more
+:set noconfirm
+:set noerrorbells
+:set novisualbell
+
+" 12 selecting text
+:set selection=inclusive
+
+" 13 editing text
+:set undolevels=1000
+:let &textwidth=&columns
+:set backspace=indent,eol,start
+:set formatoptions=croql
+:set noinfercase
+:set showmatch
+:set matchtime=1
+:set nojoinspaces
+:set nrformats=octal,hex
+:set complete=k,s
+
+" 14 tabs and indenting
+:set tabstop=4
+:set shiftwidth=4
+:set softtabstop=4
+:set smarttab
+:set shiftround
+:set expandtab
+:set autoindent
+:set smartindent
+:set nocindent
+
+" tabstop=4 softtabstop=4 expandtab
+" smarttab shiftwidth=4 shiftround
+" autoindent smartindent nocindent
+
+" 15 folding
+:set nofoldenable
+:set foldcolumn=0
+:set foldnestmax=10
+:set foldmethod=marker
+
+" 16 diff mode
+:set diffopt=filler,vertical
+
+" 17 mapping
+:set maxmapdepth=100
+:set remap
+:set timeout
+:set nottimeout
+:set timeoutlen=1000
+:set ttimeoutlen=-1
+
+" 18 reading and writing files
+:set modeline
+:set modelines=5
+:set nobomb
+:set fileformat=unix
+:set fileformats=unix,dos,mac
+:set write
+:set writebackup
+:set nobackup
+:set autowrite
+:set autowriteall
+:set writeany
+:set noshortname
+:set cryptmethod=blowfish
+
+" 19 the swap file
+:set swapfile
+:set swapsync=fsync
+:set updatecount=200
+:set updatetime=1500
+
+" 20 command line editing
+:set suffixes=.bak,~,.o,.h,.info,.swp,.obj
+:set wildmenu
+:set wildmode=longest,list
+
+" 21 executing external commands
+:set shell=/bin/bash
+:set shellcmdflag=-c
+:set shellredir=>%s\ 2>&1
+:set warn
+
+" 22 running make and jumping to errors
+
+" 23 language specific
+
+" 24 multi-byte characters
+"set encoding=latin1
+:set encoding=utf-8
+
+" 25 various
+:set virtualedit=block,insert
+:set loadplugins
+:set noexrc
+:set secure
+:set nogdefault
+:set noedcompatible
+:set maxfuncdepth=100
+:set sessionoptions=blank,buffers,curdir,folds,help,options,winsize
+:set viewoptions=folds,options,cursor
+:set viewdir=$HOME/tmp/.vim/view
+:set viminfo='512,\"100,f1,r/mnt/floppy,r/mnt/cdrom,n$HOME/tmp/.vim/viminfo
+
+
+"===========  PLUGINS  ==========="
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'bling/vim-airline'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-commentary'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+call vundle#end()
+
+"airline
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_inactive_collapse=1
+let g:airline_theme='dark'
+let g:airline_left_sep = '»'
+let g:airline_right_sep = '«'
+let g:airline_symbols.branch = '⎇'
+
+"solarized
+let g:solarized_termcolors=256
+let g:solarized_visibility="low"
+
+"NERDTree
+let NERDTreeIgnore=['\.vim$','\~$','\.o$','\.d$']
+
+
+"===========  FILETYPES  ==========="
+
+au BufRead,BufNewFile *.pde set filetype=arduino
+au BufRead,BufNewFile *.ino set filetype=arduino
+"TODO -- move to ~/work/.homedir/vim/rc
+au BufRead,BufNewFile *.yicf set filetype=yicf
+
+:filetype plugin indent on
+
+
+"===========  COLORS  ==========="
+:syntax on
+"colorscheme molokai
+:colorscheme solarized
+"colorscheme default
+:highlight clear SignColumn
+:highlight clear LineNr
+
+
+"===========  KEY MAPPINGS  ==========="
+
+" konsole has gone wonky on me
+"map! <C-?> 
+
+:nmap [h <Plug>GitGutterPrevHunk
+:nmap ]h <Plug>GitGutterNextHunk
+:nmap <Leader>hs <Plug>GitGutterStageHunk
+:nmap <Leader>hr <Plug>GitGutterRevertHunk
+:nmap <Leader>hp <Plug>GitGutterPreviewHunk
+:nmap <Leader>nt :NERDTreeToggle<cr>
+:nmap <Leader>nf :NERDTreeFocus<cr>
+:nmap <Leader>gd :Gdiff<cr>
+
+
+"===========  TIPS  ==========="
+
+" #173  Switch between splits very fast (for multi-file editing)
+" these keys are being used to control tmux
+"   :nmap <C-J> <C-W>j
+"   :nmap <C-K> <C-W>k
+"   :nmap <C-L> <C-W>l
+"   :nmap <C-H> <C-W>h
+
+" #84   Changing the behavior of . to include visual mode
+"TODO -- this might be handled by tpope/vim-repeat
+"vnoremap . :normal .<CR>
+
+" http://statico.github.com/vim.html
+" http://statico.github.com/vim2.html
+:nmap <Leader>l :setlocal number!<CR>
+:nmap <Leader>p :set paste<CR>
+:nmap <Leader>P :set nopaste<CR>
+
+" The following match command will mark the 74th and all following characters
+" of any line red (or whatever your highlighting scheme marks error messages
+" with):
+" :match ErrorMsg /\%>73v.\+/
+" To find out what the 'v' is for, type :help magic.
+
+

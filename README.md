@@ -33,6 +33,7 @@ To Consider
 * [ ] https://github.com/sjl/gundo.vim
 * [ ] showmarks
 * [ ] YouCompleteMe
+* arduino syntax
 
 
 Influences

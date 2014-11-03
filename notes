@@ -1,0 +1,34 @@
+From ":help runtimepath" ...
+
+        This is a list of directories which will be searched for runtime
+        files:
+          filetype.vim  filetypes by file name |new-filetype|
+          scripts.vim   filetypes by file contents |new-filetype-scripts|
+          colors/       color scheme files |:colorscheme|
+          compiler/     compiler files |:compiler|
+          doc/          documentation |write-local-help|
+          ftplugin/     filetype plugins |write-filetype-plugin|
+          indent/       indent scripts |indent-expression|
+          keymap/       key mapping files |mbyte-keymap|
+          lang/         menu translations |:menutrans|
+          menu.vim      GUI menus |menu.vim|
+          plugin/       plugin scripts |write-plugin|
+          syntax/       syntax files |mysyntaxfile|
+          tutor/        files for vimtutor |tutor|
+
+        And any other file searched for with the |:runtime| command.
+
+        The defaults for most systems are setup to search five locations:
+        1. In your home directory, for your personal preferences.
+        2. In a system-wide Vim directory, for preferences from the system
+           administrator.
+        3. In $VIMRUNTIME, for files distributed with Vim.
+        4. In the "after" directory in the system-wide Vim directory.  This is
+           for the system administrator to overrule or add to the distributed
+           defaults (rarely needed)
+        5. In the "after" directory in your home directory.  This is for
+           personal preferences to overrule or add to the distributed defaults
+           or system-wide settings (rarely needed).
+
+
+

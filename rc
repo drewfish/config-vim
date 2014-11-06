@@ -11,8 +11,8 @@ let mapleader = "\<space>"
 :set noinsertmode                   "[do not] use Insert mode as the default mode
 :set nopaste                        "[do not] paste mode, insert typed text literally
 "TODO -- include ~/work/.homedir/vim/
-:set runtimepath=$HOME/home/.vim/,$VIMRUNTIME,$HOME/home/.vim/after
-:set runtimepath+=$HOME/home/.vim/bundle/Vundle.vim
+:set runtimepath=$HOME/.vim/,$VIMRUNTIME,$HOME/.vim/after
+:set runtimepath+=$HOME/.vim/bundle/Vundle.vim
                                     "list of directories used for runtime files and plugins
 "set helpfile=                      "name of the main help file
 

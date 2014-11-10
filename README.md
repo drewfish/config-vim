@@ -5,9 +5,9 @@ my vim setup
 
 Bootstrap
 ---------
-* git clone this repo, cd into it
-* `mkdir bundle` then `cd bundle` then `git clone git@github.com:gmarik/Vundle.vim.git`
-* `cd ~` then `ln -s .../rc .vimrc`
+* git clone this repo to `~/.vim`
+* cd into it
+* `./boot.sh`
 
 
 Approach

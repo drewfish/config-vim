@@ -207,17 +207,14 @@ Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'visincr'
+Plugin 'sjl/gundo.vim'
 call vundle#end()
 
 "airline
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
 let g:airline_inactive_collapse=1
 let g:airline_theme='dark'
-let g:airline_left_sep = '»'
-let g:airline_right_sep = '«'
-let g:airline_symbols.branch = '⎇'
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 
 "solarized
 let g:solarized_termcolors=256
@@ -225,6 +222,9 @@ let g:solarized_visibility="low"
 
 "NERDTree
 let NERDTreeIgnore=['\.vim$','\~$','\.o$','\.d$']
+
+"gundo
+let g:gundo_playback_delay=0
 
 
 "===========  FILETYPES  ==========="
@@ -255,10 +255,9 @@ au BufRead,BufNewFile *.yicf set filetype=yicf
 :nmap ]h <Plug>GitGutterNextHunk
 :nmap <Leader>hs <Plug>GitGutterStageHunk
 :nmap <Leader>hr <Plug>GitGutterRevertHunk
-:nmap <Leader>hp <Plug>GitGutterPreviewHunk
-:nmap <Leader>nt :NERDTreeToggle<cr>
-:nmap <Leader>nf :NERDTreeFocus<cr>
+:nmap <Leader>n :NERDTreeToggle<cr>
 :nmap <Leader>gd :Gdiff<cr>
+:nmap <Leader>u :GundoToggle<CR>
 
 
 "===========  TIPS  ==========="
@@ -277,8 +276,8 @@ au BufRead,BufNewFile *.yicf set filetype=yicf
 " http://statico.github.com/vim.html
 " http://statico.github.com/vim2.html
 :nmap <Leader>l :setlocal number!<CR>
-:nmap <Leader>p :set paste<CR>
-:nmap <Leader>P :set nopaste<CR>
+:nmap <Leader>p :set paste!<CR>
+:nmap <Leader>w :set wrap!<CR>
 
 " The following match command will mark the 74th and all following characters
 " of any line red (or whatever your highlighting scheme marks error messages

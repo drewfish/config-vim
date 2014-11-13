@@ -44,7 +44,9 @@ let mapleader = "\<space>"
 :set background=dark
 :set hlsearch
 :let loaded_matchparen = 1
-:set colorcolumn=80
+if version >= 703
+    :set colorcolumn=80
+endif
 :set nocursorcolumn
 :set nocursorline
 
@@ -153,7 +155,9 @@ let mapleader = "\<space>"
 :set autowriteall
 :set writeany
 :set noshortname
-:set cryptmethod=blowfish
+if version >= 703
+    :set cryptmethod=blowfish
+endif
 
 " 19 the swap file
 :set swapfile

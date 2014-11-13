@@ -19,6 +19,7 @@ augroup filetypedetect
   autocmd! BufReadPost,BufNewFile   *.rcp       setfiletype txt
   autocmd! BufReadPost,BufNewFile   *.json      setfiletype javascript
   autocmd! BufReadPost,BufNewFile   .tmux.conf*,tmux.conf* setfiletype tmux
+  autocmd! BufReadPost,BufNewFile   *.hbs,*.handlebars  setfiletype html
 
 augroup END
 

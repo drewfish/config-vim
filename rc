@@ -37,7 +37,7 @@ let mapleader = "\<space>"
 :set cmdheight=1
 :set lazyredraw                  " will not redraw the screen while running macros (goes faster)
 :set nolist
-:set listchars=tab:>=,trail:-
+:set listchars=eol:$,trail:~,nbsp:~,tab:▸␣,extends:>,precedes:<
 
 " 5 syntax and highlighting
 :filetype off
@@ -154,9 +154,13 @@ endif
 :set autowrite
 :set autowriteall
 :set writeany
-:set noshortname
+if !has('nvim')
+    :set noshortname
+endif
 if version >= 703
-    :set cryptmethod=blowfish
+    if !has('nvim')
+        :set cryptmethod=blowfish
+    endif
 endif
 
 " 19 the swap file
@@ -200,19 +204,23 @@ endif
 
 "===========  PLUGINS  ==========="
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-Plugin 'bling/vim-airline'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-commentary'
-Plugin 'scrooloose/syntastic'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'juanpabloaj/vim-istanbul'
+Plugin 'junegunn/vim-emoji'
 Plugin 'scrooloose/nerdtree'
-Plugin 'visincr'
+Plugin 'scrooloose/syntastic'
 Plugin 'sjl/gundo.vim'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'visincr'
 call vundle#end()
+" :VundleInstall or :VundleUpdate
 
 "airline
 let g:airline_inactive_collapse=1
@@ -244,7 +252,7 @@ au BufRead,BufNewFile *.yicf set filetype=yicf
 "===========  COLORS  ==========="
 :syntax on
 "colorscheme molokai
-:colorscheme solarized
+:colorscheme elflord
 "colorscheme default
 :highlight clear SignColumn
 :highlight clear LineNr

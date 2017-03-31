@@ -45,7 +45,7 @@ let mapleader = "\<space>"
 :set hlsearch
 :let loaded_matchparen = 1
 if version >= 703
-    :set colorcolumn=80
+    "set colorcolumn=80
 endif
 :set nocursorcolumn
 :set nocursorline
@@ -297,4 +297,8 @@ au BufRead,BufNewFile *.yicf set filetype=yicf
 " :match ErrorMsg /\%>73v.\+/
 " To find out what the 'v' is for, type :help magic.
 
+"===========  PRESENTATIONS  ==========="
+"set colorcolumn=
+"colors solarized
+"set background=light
 

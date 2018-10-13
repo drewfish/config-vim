@@ -6,7 +6,7 @@ set foldlevel=0
 set foldmethod=indent
 set foldopen=hor
 set foldtext=
-set list
+"set list
 set nobackup
 set noswapfile
 set nowritebackup

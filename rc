@@ -79,6 +79,7 @@ endif
 :set esckeys
 :set notitle
 "set ttyfast                     "tf:    improves redrawing for newer computers
+:set t_BE=              " paste newlines verbatim instead of as ^M
 
 " 9 using the mouse
 :set mouse=
@@ -213,6 +214,7 @@ Plugin 'juanpabloaj/vim-istanbul'
 Plugin 'junegunn/vim-emoji'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'sirtaj/vim-openscad'
 Plugin 'sjl/gundo.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
@@ -245,6 +247,7 @@ au BufRead,BufNewFile *.pde set filetype=arduino
 au BufRead,BufNewFile *.ino set filetype=arduino
 "TODO -- move to ~/work/.homedir/vim/rc
 au BufRead,BufNewFile *.yicf set filetype=yicf
+au BufRead,BufNewFile *.gcode set filetype=gcode
 
 :filetype plugin indent on
 

@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e -x
 
+mkdir -p ~/.vim/bundle
 cd bundle
 if [[ ! -d "Vundle.vim" ]]; then
     git clone https://github.com/gmarik/Vundle.vim.git

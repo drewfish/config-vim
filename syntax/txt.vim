@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:		simple text files for notes and outlines
 " Maintainer:	Drew Folta <drew@folta.net>
-" Last Change:	
+" Last Change:
 
 " based on config.vim by Christian Hammesr
 
@@ -14,14 +14,47 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-syn match   txtheader     "^\s*\u\L\+\>"
-syn match   txtdelimiter "[^A-Za-z ]"
+" pattern notes
+"   pattern ::= branch \| branch    ...
+"   branch  ::= concat \& concat    ...
+"   concat  ::= piece piece         ...
+"   piece   ::= atom
+"               atom multi
+"   atom    ::= oridinary-atom
+"               \( pattern \)
+"               \%( pattern \)
+"               \z( pattern \)
+" syntax pattern always act with magic
+"   \s      whitespace char
+"   \u      uppercase char
+"   \L      non-lowercase char
+"   \<      beginning of word
+"   \>      end of word
+"   ^       start of line
+"   $       end of line
+"   .       any char
+"   *       previous atom zero-or-more times
+"   \+      previous atom one-or-more times
+"   \=      previous atom one-or-one times
+"   \?      previous atom one-or-one times
+"   \(\)    group into an atom
+"   \|      alternatives
+"   \a      alphabetic char
+"   \\      literal backslash
+"   \.      literal dot
+"   {       literal {
+"   a       literal a
+"   \^      literal ^
+"
+
+syn match   txtheader     "^\s*\u\+\>" display
+syn match   txtdelimiter "[^A-Za-z ]+" display
 "yn match   txtdelimiter "[=|&\*\+\-\<\>()\[\];,:/$]"
 "yn match   txtoperator  "[]"
-syn match   txtcomment   "#.*"
+syn match   txtcomment   "#.*" display
 "yn match   txtfunction  "^\<[A-Z_][A-Z0-9_]*\>$"
-syn match   txtnumber    "[-+]\=\d\+\(\.\d*\)\="
-"yn match   txtnumber    "\<\S\{-}[-+]\=\d\+\S\{-}\>"
+syn match   txtnumber    "[-+]\?\d\+\(\.\d*\)\?"
+"yn match   txtnumber    "\<\S\{-}[-+]\?\d\+\S\{-}\>"
 syn region  txtcomment   start=+(+ skip=+\\)+ end=+)+
 "yn region  txtstring    start=+`+ skip=+\\'+ end=+'+
 "yn region  txtstring    start=+`+ skip=+\\'+ end=+`+

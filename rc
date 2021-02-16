@@ -45,7 +45,7 @@ let mapleader = "\<space>"
 :set hlsearch
 :let loaded_matchparen = 1
 if version >= 703
-    "set colorcolumn=80
+    :set colorcolumn=100
 endif
 :set nocursorcolumn
 :set nocursorline
@@ -76,7 +76,6 @@ endif
 "endif
 :set t_Co=256
 "set weirdinvert        " doesn't seem to help :(
-:set esckeys
 :set notitle
 "set ttyfast                     "tf:    improves redrawing for newer computers
 :set t_BE=              " paste newlines verbatim instead of as ^M
@@ -103,13 +102,13 @@ endif
 :set undolevels=1000
 :let &textwidth=&columns
 :set backspace=indent,eol,start
-:set formatoptions=croql
+:set formatoptions=croqlj
 :set noinfercase
 :set showmatch
 :set matchtime=1
 :set nojoinspaces
 :set nrformats=octal,hex
-:set complete=k,s
+:set complete=k,s,i
 
 " 14 tabs and indenting
 :set tabstop=4
@@ -166,7 +165,7 @@ endif
 
 " 19 the swap file
 :set swapfile
-:set swapsync=fsync
+"set swapsync=fsync
 :set updatecount=200
 :set updatetime=1500
 
@@ -199,8 +198,7 @@ endif
 :set maxfuncdepth=100
 :set sessionoptions=blank,buffers,curdir,folds,help,options,winsize
 :set viewoptions=folds,options,cursor
-:set viewdir=$HOME/tmp/.vim/view
-:set viminfo='512,\"100,f1,r/mnt/floppy,r/mnt/cdrom,n$HOME/tmp/.vim/viminfo
+:set viewdir=$HOME/.tmp/.vim/view
 
 
 "===========  PLUGINS  ==========="
@@ -209,11 +207,13 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'glts/vim-magnum'
+Plugin 'glts/vim-radical'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'juanpabloaj/vim-istanbul'
+"Plugin 'juanpabloaj/vim-istanbul'
 Plugin 'junegunn/vim-emoji'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Plugin 'sirtaj/vim-openscad'
 Plugin 'sjl/gundo.vim'
 Plugin 'tpope/vim-commentary'
@@ -221,6 +221,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'visincr'
+"TODO consider https://github.com/ncm2/ncm2 (replaces syntastic)
 call vundle#end()
 " :VundleInstall or :VundleUpdate
 
@@ -248,8 +249,11 @@ au BufRead,BufNewFile *.ino set filetype=arduino
 "TODO -- move to ~/work/.homedir/vim/rc
 au BufRead,BufNewFile *.yicf set filetype=yicf
 au BufRead,BufNewFile *.gcode set filetype=gcode
+au BufRead,BufNewFile *.md set filetype=markdown
 
 :filetype plugin indent on
+
+:let g:markdown_fenced_languages = ['javascript', 'html', 'python', 'bash=sh']
 
 
 "===========  COLORS  ==========="
@@ -273,6 +277,13 @@ au BufRead,BufNewFile *.gcode set filetype=gcode
 :nmap <Leader>n :NERDTreeToggle<cr>
 :nmap <Leader>gd :Gdiff<cr>
 :nmap <Leader>u :GundoToggle<CR>
+
+
+"===========  VIM ONLY  ==========="
+if !has('nvim')
+    :set viminfo='512,\"100,f1,r/mnt/floppy,r/mnt/cdrom,n$HOME/.tmp/.vim/viminfo
+    :set esckeys
+endif
 
 
 "===========  TIPS  ==========="
